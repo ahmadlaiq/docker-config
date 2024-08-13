@@ -1,6 +1,6 @@
 # config
 Clone Repository Github
-Cp .env.example .env
+cp .env.example .env
 Add Dockerfile
 Add docker-compose.yml
 Add docker-compose/nginx/company_profile.conf
@@ -12,5 +12,18 @@ docker-compose exec app ls -l
 docker-compose exec app rm -rf vendor composer.lock
 docker-compose exec app composer install
 docker-compose exec app php artisan key:generate
+docker-compose exec app php artisan migrate
+docker-compose exec app php artisan db:seed
+
+
+# If ubuntu version is  24.04 LTS
+# deploy
+docker compose up -d
+docker compose exec app ls -l
+docker compose exec app rm -rf vendor composer.lock
+docker compose exec app composer install
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate
+docker compose exec app php artisan db:seed
 
 open browser http://hostname:8000

@@ -1,0 +1,16 @@
+# config
+Clone Repository Github
+Cp .env.example .env
+Add Dockerfile
+Add docker-compose.yml
+Add docker-compose/nginx/company_profile.conf
+Add docker-compose/mysql/init_db.sql
+
+# deploy
+docker-compose up -d
+docker-compose exec app ls -l
+docker-compose exec app rm -rf vendor composer.lock
+docker-compose exec app composer install
+docker-compose exec app php artisan key:generate
+
+open browser http://hostname:8000
